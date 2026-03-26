@@ -1,0 +1,21 @@
+{
+    "name": "user/projeto-alfa",
+    "autoload": {
+        "psr-4": {
+            "Morainstein\\Mvc\\": "src/"
+        },
+        "files": [
+            "functions.php",
+            "routes.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "S0upM4n",
+            "email": "Fernandosiecm@gmail.com"
+        }
+    ],
+    "require": {
+        "ramsey/uuid": "^4.9"
+    }
+}
