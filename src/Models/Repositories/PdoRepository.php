@@ -119,7 +119,7 @@ class PdoRepository implements Repository
 
     return null;
   }
-  // Alerkina777
+
 
   protected function all() : ?array
   {
