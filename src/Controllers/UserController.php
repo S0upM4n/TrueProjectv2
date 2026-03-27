@@ -36,7 +36,7 @@ class UserController extends Controller
             $senha = $_POST['senha'];
             $titulo = $_POST['titulo'] ?? null;
             
-            // Check if user already exists
+           
             if ($this->repository->userExistsByEmail($email)) {
                 throw new EntityException(EntityException::USER_EXISTS);
             }
@@ -50,7 +50,7 @@ class UserController extends Controller
             redirectTo('/ProjetãoAlfa/turma25MVC/public/dashboard');
 
         } catch (EntityException $e) {
-            // Pass error message and submitted data back to home view
+
             $users = $this->repository->all();
             view('home', [
                 'users' => $users,
@@ -86,17 +86,10 @@ class UserController extends Controller
                 return;
             }
 
-            // If login fails, show error on home page
-                // $users = $this->repository->all();
-                // view('home', [
-                //     'users' => $users,
-                //     'error' => 'Email ou senha inválidos.',
-                //     'errorType' => 'login',
-                //     'loginEmail' => $email
-                // ]);
+
                 throw new \Exception('Email ou senha inválidos.');
         } catch (\Exception $e) {
-            // If an exception occurs, show error on home page
+
             $users = $this->repository->all();
             view('home', [
                 'users' => $users,
@@ -134,14 +127,14 @@ class UserController extends Controller
 
         try {
             $this->repository->updateProfile($_SESSION['email'], $nome, $email, $titulo);
-            // Update session data
+
             $_SESSION['nome'] = $nome;
             $_SESSION['email'] = $email;
             $_SESSION['titulo'] = $titulo;
 
             redirectTo('/ProjetãoAlfa/turma25MVC/public/dashboard');
         } catch (EntityException $e) {
-            // Pass error message and submitted data back to edit profile view
+
             view('editProfile', [
                 'error' => $e->getMessage(),
                 'nome' => $nome,
