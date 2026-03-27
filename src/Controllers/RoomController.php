@@ -33,7 +33,6 @@ class RoomController extends Controller
             redirectTo('/ProjetãoAlfa/turma25MVC/public/dashboard');
 
         } catch (EntityException $e) {
-            // Pass error message and submitted data back to home view
             $users = (new UserRepository())->all();
             view('dashboard', [
                 'users' => $users,
@@ -72,7 +71,6 @@ class RoomController extends Controller
         } else {
             $_SESSION['idsala'] = $salaId;
                 $this->grabRoomInfo();
-            //grab room info and pass to session
             redirectTo('/ProjetãoAlfa/turma25MVC/public/sala');
         }
 
@@ -102,7 +100,7 @@ class RoomController extends Controller
             return;
         }
 
-        //get messages from database and pass to view
+
         $messages = $this->repository->getMessagesByTime($salaId);
          view('sala', ['sala' => $sala, 'messages' => $messages]);
 
